@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,OAAQ;EACN,QAAQ,EAAE,QAAQ;EAClB,GAAG,EAAE,GAAG;EACR,IAAI,EAAE,GAAG;EACT,gBAAgB,EAAE,OAAkB;EACpC,YAAY,EAAE,KAAK;EACnB,YAAY,EAAE,GAAG",
+"sources": ["top-add.component.scss"],
+"names": [],
+"file": "top-add.component.css"
+}

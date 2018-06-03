@@ -1,0 +1,45 @@
+<div class="container">
+<div class="single-news">
+
+  <div class="view overlay">
+    <img src="{{post.image_hd}}" class="img-fluid " alt="">
+    <div class="mask flex-center rgba-cyan-light">
+      <p class="white-text">
+      <div class="" *ngIf="post.is_video; then videoPost else imagePost" #postDetail>
+    </div>
+    </div>
+  </div>
+  </div>
+  <!--Excerpt-->
+  <div class="row">
+
+    <div class="light-blue-text">
+        <i class="pad-icon fa fa-heart"></i>
+        <strong> {{post.up_votes}}</strong>
+    </div>
+      <i class="pad-icon fa light-green-text fa-thumbs-up"></i>
+      <i class="pad-icon fa yellow-text fa-thumbs-down"></i>
+
+      <div class="pull-right">
+        <i class="pad-icon fa fa-clock-o fa-sm"></i>
+        {{post.created | timeAgo}}
+      </div>
+    <div>
+    <button type="button" class="btn btn-sm rgba-green-strong waves-light pull-right" (click)="goPost()" mdbWavesEffect>
+      <i *ngIf="post.is_video" class="fa fa-video-camera"></i> View Post
+    </button>
+    </div>
+  </div>
+  <!--<div class="fb-share-button" data-href="http://localhost:8000/" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8000%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>-->
+  <p> {{post.caption}}
+  </p>
+</div>
+<div class="clearfix"></div>
+
+<ng-template #videoPost>
+  <i class="fa fa-play fa-3x" (click)="goPost()" aria-hidden="true"></i>
+</ng-template>
+
+<ng-template #imagePost>
+  <i class="fa fa-picture-o fa-3x" (click)="goPost()" aria-hidden="true"></i>
+</ng-template>

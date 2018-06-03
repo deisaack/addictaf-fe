@@ -1,0 +1,43 @@
+
+<div class="card">
+
+  <!--Card image-->
+  <div class="" *ngIf="post.is_video; then postDetail else imagePost" #postDetail>
+  </div>
+  <!--Card content-->
+  <div class="card-body">
+    <div class="row">
+
+      <div class="light-blue-text">
+        <i class="pad-icon fa fa-heart"></i>
+        <strong> {{post.up_votes}}</strong>
+      </div>
+      <i class="pad-icon fa light-green-text fa-thumbs-up"></i>
+      <i class="pad-icon fa yellow-text fa-thumbs-down"></i>
+
+      <div class="pull-right">
+        <i class="pad-icon fa fa-clock-o fa-sm"></i>
+        {{post.created | timeAgo}}
+      </div>
+      <div class="pull-right">
+        <p class="pad-icon">{{post.views}} Views</p>
+      </div>
+    </div>
+    <!--Title-->
+    <!--<h4 class="card-title">Card title</h4>-->
+    <!--Text-->
+    <p class="card-text">{{post.caption}}</p>
+    <!--<a href="#" class="btn btn-primary waves-light" mdbWavesEffect>Button</a>-->
+  </div>
+
+</div>
+
+<ng-template #postDetail>
+  <video class="embed-responsive" controls>
+    <source src="{{post.video_hd}}" type="video/mp4">
+    <img src="{{post.image_hd}}" alt="{{post.caption}}" class="img-fluid" #imagePost>
+  </video>
+</ng-template>
+<ng-template #imagePost>
+  <img src="{{post.image_hd}}" alt="{{post.caption}}" class="img-fluid" #imagePost>
+</ng-template>

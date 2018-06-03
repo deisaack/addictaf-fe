@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ng serve --host 0.0.0.0 --disable-host-check",
+    "build": "ng build --prod",
+    "push": "scp -rv dist/ addictaf@168.62.168.90:/home/addictaf/web/addictaf/fe",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -20,15 +21,26 @@
     "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/router": "^6.0.0",
+    "@types/chart.js": "^2.7.17",
+    "@types/hammerjs": "^2.0.35",
+    "angular-bootstrap-md": "^6.0.2",
+    "chart.js": "^2.7.2",
     "core-js": "^2.5.4",
+    "font-awesome": "^4.7.0",
+    "hammerjs": "^2.0.8",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.1",
+    "ngx-infinite-scroll": "^0.8.4",
+    "raven-js": "^3.25.2",
     "rxjs": "^6.0.0",
+    "rxjs-compat": "^6.0.0-rc.1",
+    "time-ago-pipe": "^1.3.2",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "^6.0.0",
     "@angular-devkit/build-angular": "~0.6.0",
-    "typescript": "~2.7.2",
     "@angular/cli": "~6.0.0",
+    "@angular/compiler-cli": "^6.0.0",
     "@angular/language-service": "^6.0.0",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
@@ -43,6 +55,7 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.3.0",
     "ts-node": "~5.0.1",
-    "tslint": "~5.9.1"
+    "tslint": "~5.9.1",
+    "typescript": "~2.7.2"
   }
 }
