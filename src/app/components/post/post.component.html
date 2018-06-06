@@ -2,7 +2,10 @@
 <div class="single-news">
 
   <div class="view overlay">
-    <img src="{{post.image_hd}}" class="img-fluid " alt="">
+    <!--<img src="{{post.image_hd}}" class="img-fluid" onerror="/assets/img/default.svg" alt="">-->
+    <!--<img src="{{defaultImage}}" class="img-fluid" alt="">-->
+    <!--<img [src]="defaultImage | pathPipe" class="img-fluid" alt="" (error)="filename = '/assets/img/default.svg'" />-->
+    <img src="{{(post.image_hd) || (post.image_sm)}}" class="img-fluid" alt="{{post.caption}}" onerror="this.src='/assets/img/default.svg'" />
     <div class="mask flex-center rgba-cyan-light">
       <p class="white-text">
       <div class="" *ngIf="post.is_video; then videoPost else imagePost" #postDetail>
@@ -13,14 +16,15 @@
   <!--Excerpt-->
   <div class="row">
 
-    <div class="light-blue-text">
-        <i class="pad-icon fa fa-heart"></i>
-        <strong> {{post.up_votes}}</strong>
-    </div>
-      <i class="pad-icon fa light-green-text fa-thumbs-up"></i>
-      <i class="pad-icon fa yellow-text fa-thumbs-down"></i>
+
+      <i class="pad-icon fa {{likeColor}} fa-thumbs-up fa-2x" (click)="like()"></i>
+      <i class="pad-icon fa {{likeColor}} fa-thumbs-down fa-2x" (click)="unlike()"></i>
 
       <div class="pull-right">
+        <div class="green-text">
+          <i class="pad-icon fa fa-heart fa-2x"></i>
+          <strong> {{post.up_votes}}</strong>
+        </div>
         <i class="pad-icon fa fa-clock-o fa-sm"></i>
         {{post.created | timeAgo}}
       </div>
@@ -37,9 +41,9 @@
 <div class="clearfix"></div>
 
 <ng-template #videoPost>
-  <i class="fa fa-play fa-3x" (click)="goPost()" aria-hidden="true"></i>
+  <i class="fa fa-play fa-3x text-white" (click)="goPost()" aria-hidden="true"></i>
 </ng-template>
 
 <ng-template #imagePost>
-  <i class="fa fa-picture-o fa-3x" (click)="goPost()" aria-hidden="true"></i>
+  <i class="fa fa-picture-o fa-3x text-white" (click)="goPost()" aria-hidden="true"></i>
 </ng-template>

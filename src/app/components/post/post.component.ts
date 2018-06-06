@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PostModel} from '../../models/post-model';
 import {Router} from '@angular/router';
+import {PostsService} from '../../services/post.service';
 
 
 @Component({
@@ -10,12 +11,26 @@ import {Router} from '@angular/router';
 })
 export class PostComponent implements OnInit {
   @Input() post: PostModel;
+  likeColor = 'blue-text';
 
   constructor(
-    private router: Router
+    private router: Router,
+    private postservice: PostsService,
   ) { }
 
   ngOnInit() {
+  }
+  like() {
+    this.likeColor = 'yellow-text';
+    this.postservice.vote(this.post, 'upvote').subscribe();
+    this.post.views += 1;
+    this.post.up_votes += 1;
+  }
+  unlike() {
+    this.likeColor = 'red-text';
+    this.postservice.vote(this.post, 'down_vote').subscribe();
+    this.post.views += 1;
+    this.post.down_votes += 1;
   }
 
   goPost() {

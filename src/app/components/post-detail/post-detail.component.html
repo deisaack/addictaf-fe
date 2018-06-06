@@ -8,12 +8,12 @@
   <div class="card-body">
     <div class="row">
 
-      <div class="light-blue-text">
+      <div class="blue-text">
         <i class="pad-icon fa fa-heart"></i>
         <strong> {{post.up_votes}}</strong>
       </div>
-      <i class="pad-icon fa light-green-text fa-thumbs-up"></i>
-      <i class="pad-icon fa yellow-text fa-thumbs-down"></i>
+      <i class="pad-icon fa light-green-text fa-thumbs-up" (click)="like()"></i>
+      <i class="pad-icon fa yellow-text fa-thumbs-down" (click)="unlike()"></i>
 
       <div class="pull-right">
         <i class="pad-icon fa fa-clock-o fa-sm"></i>
@@ -41,3 +41,5 @@
 <ng-template #imagePost>
   <img src="{{post.image_hd}}" alt="{{post.caption}}" class="img-fluid" #imagePost>
 </ng-template>
+
+<div class="fb-comments" data-href="https://www.addictaf.com/" data-numposts="5"></div>

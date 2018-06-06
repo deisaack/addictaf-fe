@@ -14,7 +14,8 @@ export class PostDetailComponent implements OnInit {
   post: PostModel = new PostModel(0, '', '', '', '',
     '', 0, 0, '', '', false);
   alerts = [];
-  queryParams = new QueryParams(8);
+  likeColor = 'blue-text';
+
   constructor(
     private postservice: PostsService,
     private router: Router,
@@ -23,8 +24,20 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit(
   ) {
-    let id = this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.getPost(id);
+  }
+  like() {
+    this.likeColor = 'yellow-text';
+    this.postservice.vote(this.post, 'upvote').subscribe();
+    this.post.views += 1;
+    this.post.up_votes += 1;
+  }
+  unlike() {
+    this.likeColor = 'red-text';
+    this.postservice.vote(this.post, 'down_vote').subscribe();
+    this.post.views += 1;
+    this.post.down_votes += 1;
   }
   getPost(id) {
     this.postservice.getPost(id).subscribe(

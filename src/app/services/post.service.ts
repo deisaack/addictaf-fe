@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {authenticatedHttpOptions, baseUrl} from '../../environments/common';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
-import {QueryParams} from '../models/post-model';
+import {PostModel, QueryParams} from '../models/post-model';
 
 @Injectable()
 export class PostsService {
@@ -12,6 +12,10 @@ export class PostsService {
     private http: HttpClient,
   ) { }
 
+  vote(post: PostModel, action: string) {
+    const url = this.postsUrl + post.id + '/' + action + '/';
+    return this.http.put(url, '', authenticatedHttpOptions);
+  }
   getPost(id: string): Observable<any> {
     return this.http.get(this.postsUrl + id + '/');
   }
