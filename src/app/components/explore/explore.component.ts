@@ -4,6 +4,7 @@ import {PostsService} from '../../services/post.service';
 import {HttpErrorResponse} from '@angular/common/http'
 import * as _ from 'lodash';
 import {ActivatedRoute, Router, RouterState} from '@angular/router';
+import {liveUrl} from '../../../environments/common';
 
 @Component({
   selector: 'app-explore',
@@ -67,7 +68,8 @@ export class ExploreComponent implements OnInit {
 
   goPost() {
     const path = '/post/' + this.selectedPost.id;
-    this.router.navigate([path], { queryParams: { category: 'trending', price: 'not-cheap' } });
+    this.router.navigate([path], { queryParams: { category: 'trending' } });
+    // window.location.replace(liveUrl + 'post/' + this.selectedPost.id);
   }
   onSelectOrdering(value) {
     this.queryParams.ordering = value;

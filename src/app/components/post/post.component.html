@@ -5,7 +5,8 @@
     <!--<img src="{{post.image_hd}}" class="img-fluid" onerror="/assets/img/default.svg" alt="">-->
     <!--<img src="{{defaultImage}}" class="img-fluid" alt="">-->
     <!--<img [src]="defaultImage | pathPipe" class="img-fluid" alt="" (error)="filename = '/assets/img/default.svg'" />-->
-    <img src="{{(post.image_hd) || (post.image_sm)}}" class="img-fluid" alt="{{post.caption}}" onerror="this.src='/assets/img/default.svg'" />
+    <img src="{{post.image}}" class="img-fluid" alt="{{post.caption}}" onerror="this.src='/assets/img/default.svg'" />
+    <!--<img src="{{(post.image) || (post.image)}}" class="img-fluid" alt="{{post.caption}}" onerror="this.src='/assets/img/default.svg'" />-->
     <div class="mask flex-center rgba-cyan-light">
       <p class="white-text">
       <div class="" *ngIf="post.is_video; then videoPost else imagePost" #postDetail>
@@ -15,8 +16,6 @@
   </div>
   <!--Excerpt-->
   <div class="row">
-
-
       <i class="pad-icon fa {{likeColor}} fa-thumbs-up fa-2x" (click)="like()"></i>
       <i class="pad-icon fa {{likeColor}} fa-thumbs-down fa-2x" (click)="unlike()"></i>
 

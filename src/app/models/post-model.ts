@@ -11,7 +11,9 @@ export class PostModel {
     public caption: string,
     public created: string,
     public is_video: boolean,
-    public views?: number
+    public image?: number,
+    public video?: number,
+  public views?: number
   ) {}
 }
 

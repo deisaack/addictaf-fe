@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {PostModel} from '../../models/post-model';
 import {Router} from '@angular/router';
 import {PostsService} from '../../services/post.service';
+import {baseUrl, liveUrl} from '../../../environments/common';
 
 
 @Component({
@@ -36,5 +37,6 @@ export class PostComponent implements OnInit {
   goPost() {
     const path = '/post/' + this.post.id;
     this.router.navigate([path]);
+    // window.location.replace(liveUrl + 'post/' + this.post.id);
   }
 }

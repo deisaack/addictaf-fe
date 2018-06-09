@@ -55,7 +55,6 @@ import RavenErrorHandler from './raven-config.module';
   ],
   providers: [
     PostsService, AddsService, ComponentLoaderFactory, PositioningService,
-    { provide: ErrorHandler, useClass: RavenErrorHandler }
     ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
